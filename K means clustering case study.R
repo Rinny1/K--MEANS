@@ -1,11 +1,7 @@
 1#=======================Setting Working Environment for K-Means Clustering==================#
 
 
-list.of.packages <- c("datasets", "ggplot2","cluster")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages, repos="http://cran.rstudio.com/")
 
-library(datasets)
 library(ggplot2)
 library(cluster)
 
