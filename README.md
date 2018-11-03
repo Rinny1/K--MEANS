@@ -168,6 +168,8 @@ aircluster1
 [4,]  60166.18  55.20812   8709.712   8.362098    203.2589   0.6294416   6109.540
 [5,]  32706.67 126.46667   3097.478   4.284706    181.4698   0.5403922   2281.055
 
+#Insights
+
 # Compared to other clusters cluster 1 has largest value for balance and bonusmiles so it means that customers are eligible for award travel and they have accumulated miles through non flight bonus transactions.
 # Compared to other clusters cluster 2 has largest value for Qualmiles,Bonustrans,flightmiles and flighttrans which means that customers are qualified for top flight status and they have accumulated miles from flight transactions as well as from non flight transactions.
 # Compared to other clusters cluster 3 has smallest value for  Qualmiles which means that customers are very less who are qualified for top flight status but they have accumulated points from flight transactions as well as from non flight transactions
