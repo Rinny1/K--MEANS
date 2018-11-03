@@ -62,7 +62,7 @@ Balance          QualMiles         BonusMiles        BonusTrans        FlightMil
  3rd Qu.:-0.09849   3rd Qu.: 0.80960  
  Max.   :13.61035   Max.   : 2.02284  
  
- After normalizing we get mean of 0.
+ by summary() function we get mean of 0.
  Also 
  sd(AirlineNormal$Balance)
  sd(AirlineNormal$QualMiles)
@@ -73,5 +73,35 @@ Balance          QualMiles         BonusMiles        BonusTrans        FlightMil
  sd(AirlineNormal$DaysSinceEnroll)
  it gives output as 1
  
+ by sd() function we get standard deviation of 1.
+ 
  so now we have normalize data with mean of 0 and standard deviation of 1.
+ 
+ # Hierarchical Clustering Methodology
+ 1.Suppose we have n data points so we will have n no. of clusters.
+ 2.After that we will find clusters which have minimum distance between them using euclidean distance and consider it as one cluster.
+ 3.Now we have cluster with two elements in it so we will find distance with cluster of one element and one with two element using ward.d method.
+ 4.we will do this until we get one big cluster containing all data points.
+ 
+ we will compute the euclidean distance between data points and then do hierarchical clustering using wqard.d method on normalized
+ data.
+ 
+distan<-dist(AirlineNormal, method = "euclidean")
+ClusterAirline<-hclust(distan, method = "ward.D")
+plot(ClusterAirline)
+
+ After discussing with marketing department airline decides to proceed with 5 clusters. Divide the data points into 5 clusters by using the cutree function
+ AirlineCluster<-cutree(ClusterAirline, k = 5)
+
+now we look at the table that how many data points have assigned to each cluster by using table() function
+table(AirlineCluster)
+1    2    3    4    5 
+ 776  519  494  868 1342 
+ 
+ so we can see cluster 1 has 776 elements
+ cluster 2 has 519 elements
+ cluster 3 has 494 elements
+ cluster 4 has 868 elements
+ cluster 5 has 1342 elements
+ 
  
