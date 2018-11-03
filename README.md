@@ -1,7 +1,6 @@
-Market Segmentation for airlines
+# Market Segmentation for airlines
 
-The objective of market segmentation is to divide a broad target market of customers into similar groups.Clustering is a technique to automatically
-find similar groups within a given dataset.
+The objective of market segmentation is to divide a broad target market of customers into similar groups and then design a marketing strategy for each group.Clustering is a technique to automatically find similar groups within a given dataset.
 
 Before we proceed for analysis we need to understand what is frequent flyer program?
 
@@ -9,8 +8,7 @@ A frequent-flyer program (FFP) is a loyalty program offered by an airline.Many a
 
 Frequent-flyer programs can be seen as a certain type of virtual currency, one with unidirectional flow of money to purchase points, but no exchange back into money.
 
-Now we can proceed with our analysis,In this analysis we will use clustering to find similar groups within frequent flyer program so that airlines
-can target different segments of customers with different type of mileage offers.
+Now we can proceed with our analysis,In this analysis we will use clustering to find similar groups within frequent flyer program so that airlines can target different segments of customers with different type of mileage offers.
 
 The dataset AirlineCluster.csv that we are using for analysis contains 3999 observations and 7 variables.The description  of variables that we are using for analysis is given below to have understanding of variables:
 
