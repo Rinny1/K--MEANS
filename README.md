@@ -104,4 +104,29 @@ table(AirlineCluster)
  cluster 4 has 868 elements
  cluster 5 has 1342 elements
  
+ After that we will compute average values for all the variables in each cluster.
+ 
+ aircluster=c(tapply(Airline$Balance,AirlineCluster,mean),tapply(Airline$QualMiles,AirlineCluster,mean),
+             tapply(Airline$BonusMiles,AirlineCluster,mean),tapply(Airline$BonusTrans,AirlineCluster,mean), 
+             tapply(Airline$FlightMiles,AirlineCluster,mean),tapply(Airline$FlightTrans,AirlineCluster,mean),
+             tapply(Airline$DaysSinceEnroll,AirlineCluster,mean))
+dim(aircluster)=c(5,7)
+colnames(aircluster) = c("Balance", "QualMiles", "BonusMiles", "BonusTrans", "FlightMiles", 
+                     "FlightTrans", "DaysEnroll")
+aircluster
+
+ Balance    QualMiles BonusMiles BonusTrans FlightMiles FlightTrans DaysEnroll
+[1,]  57866.90    0.6443299  10360.124  10.823454    83.18428   0.3028351   6235.365
+[2,] 110669.27 1065.9826590  22881.763  18.229287  2613.41811   7.4026975   4402.414
+[3,] 198191.57   30.3461538  55795.860  19.663968   327.67611   1.0688259   5615.709
+[4,]  52335.91    4.8479263  20788.766  17.087558   111.57373   0.3444700   2840.823
+[5,]  36255.91    2.5111773   2264.788   2.973174   119.32191   0.4388972   3060.081
+
+# Compared to other clusters,cluster 1 has largest values for daysEnroll so it means cluster 1 has not frequent customers but they are loyal
+# Compared to other clusters,cluster 2 has largest values for Qualmiles,Flightmiles and Flighttrans so it means cluster 2 has customers that have acquired topflight status mostly through flight miles.
+# Compared to other clusters,cluster 3 has largest values for balance and Bonustrans so it means cluster 3 has customers that are eligible for award travel mostly through non flight bonus transactions.
+# As cluster 4 has smallest value for daysenroll so it means cluster 4 has relatively new customers.
+# As cluster 5 has lower than average values in almost all the varibles so the cluster 5 also has customers that new and they do not use 
+# airlines very often
+
  
