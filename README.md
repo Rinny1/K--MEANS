@@ -126,7 +126,6 @@ aircluster
 # Compared to other clusters,cluster 2 has largest values for Qualmiles,Flightmiles and Flighttrans so it means cluster 2 has customers that have acquired topflight status mostly through flight miles.
 # Compared to other clusters,cluster 3 has largest values for balance and Bonustrans so it means cluster 3 has customers that are eligible for award travel mostly through non flight bonus transactions.
 # As cluster 4 has smallest value for daysenroll so it means cluster 4 has relatively new customers.
-# As cluster 5 has lower than average values in almost all the varibles so the cluster 5 also has customers that new and they do not use 
-# airlines very often
+# As cluster 5 has lower than average values in almost all the varibles so the cluster 5 also has customers that new and they do not use airlines very often
 
  
