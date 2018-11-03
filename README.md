@@ -122,10 +122,58 @@ aircluster
 [4,]  52335.91    4.8479263  20788.766  17.087558   111.57373   0.3444700   2840.823
 [5,]  36255.91    2.5111773   2264.788   2.973174   119.32191   0.4388972   3060.081
 
-# Compared to other clusters,cluster 1 has largest values for daysEnroll so it means cluster 1 has not frequent customers but they are loyal
-# Compared to other clusters,cluster 2 has largest values for Qualmiles,Flightmiles and Flighttrans so it means cluster 2 has customers that have acquired topflight status mostly through flight miles.
-# Compared to other clusters,cluster 3 has largest values for balance and Bonustrans so it means cluster 3 has customers that are eligible for award travel mostly through non flight bonus transactions.
-# As cluster 4 has smallest value for daysenroll so it means cluster 4 has relatively new customers.
-# As cluster 5 has lower than average values in almost all the varibles so the cluster 5 also has customers that new and they do not use airlines very often
+# Insights
 
+# Compared to other clusters,cluster 1 has largest values for daysEnroll so it means cluster 1 has not frequent customers but they are loyal.Mostly contains customers with few miles but they are with airline for long time.
+# Compared to other clusters,cluster 2 has largest values for Qualmiles,Flightmiles and Flighttrans so it means cluster 2 has customers that have acquired topflight status mostly through flight miles.
+# Compared to other clusters,cluster 3 has largest values for balance ,bonusmiles and Bonustrans so it means cluster 3 has customers that are eligible for award travel mostly through non flight bonus transactions.
+# As cluster 4 has smallest value for daysenroll so it means cluster 4 has relatively new customers.But they are accumulating reasonable number of miles mostly through non  flight bonus transactions.
+# As cluster 5 has lower than average values in almost all the varibles so the cluster 5 also has customers that new and they do not use airlines very often.
+
+ # K-Means Clustering
+ 1.Suppose we have x data points and we want to divide into n no. of clusters and we take these n random points as n centroids.
+ 2.we will assign each data point to nearest cluster centre by finding out their euclidean distance.This way all data points are divided among 5 clusters.
+ 3.we will update them until no change of position occur.
  
+ set.seed(88)
+k<-5
+#Since, 
+KMC<-kmeans(AirlineNormal,k,iter.max = 1000)
+KMC
+library(fpc)
+
+table(KMC$cluster)
+
+   1    2    3    4    5 
+ 408  141  993 1182 1275
+ so Cluster 1 has 408 variables.
+cluster 2 has 141 variables.
+cluster 3 has 993 variables
+cluster 4 has 1182 variables.
+cluster 5 has 1275 variables
+
+aircluster1=c(tapply(Airline$Balance,KMC$cluster,mean),tapply(Airline$QualMiles,KMC$cluster,mean),
+             tapply(Airline$BonusMiles,KMC$cluster,mean),tapply(Airline$BonusTrans,KMC$cluster,mean), 
+             tapply(Airline$FlightMiles,KMC$cluster,mean),tapply(Airline$FlightTrans,KMC$cluster,mean),
+             tapply(Airline$DaysSinceEnroll,KMC$cluster,mean))
+dim(aircluster1)=c(5,7)
+colnames(aircluster1) = c("Balance", "QualMiles", "BonusMiles", "BonusTrans", "FlightMiles", 
+                         "FlightTrans", "DaysEnroll")
+aircluster1
+
+ Balance QualMiles BonusMiles BonusTrans FlightMiles FlightTrans DaysEnroll
+[1,] 219161.40 539.57843  62474.483  21.524510    623.8725   1.9215686   5605.051
+[2,] 174431.51 673.16312  31985.085  28.134752   5859.2340  17.0000000   4684.901
+[3,]  67977.44  34.99396  24490.019  18.429003    289.4713   0.8851964   3416.783
+[4,]  60166.18  55.20812   8709.712   8.362098    203.2589   0.6294416   6109.540
+[5,]  32706.67 126.46667   3097.478   4.284706    181.4698   0.5403922   2281.055
+
+# Compared to other clusters cluster 1 has largest value for balance and bonusmiles so it means that customers are eligible for award travel and they have accumulated miles through non flight bonus transactions.
+# Compared to other clusters cluster 2 has largest value for Qualmiles,Bonustrans,flightmiles and flighttrans which means that customers are qualified for top flight status and they have accumulated miles from flight transactions as well as from non flight transactions.
+# Compared to other clusters cluster 3 has smallest value for  Qualmiles which means that customers are very less who are qualified for top flight status but they have accumulated points from flight transactions as well as from non flight transactions
+# Compared to other clusters cluster 4 has highest value for daysenroll so it means that customers are infrequent but they are loyal.But they have accumulated some miles through non flight bonus transactions and through flight transactions.
+# Compared to other clusters cluster 5 has values lower than average value for almost all the varibles that means it has relatively new customers who do not use airlines often.
+
+plotcluster(AirlineNormal,KMC$cluster)
+clusplot(AirlineNormal,KMC$cluster,color=TRUE, shade=TRUE, 
+         labels=2, lines=0)
